@@ -1,29 +1,28 @@
 pipeline {
     agent any
-    
-    tools {
-        maven 'maven_3' 
-    }
 
     stages {
         stage('Build') {
             steps {
-                sh 'mvn clean package -DskipTests'
+                // Grant permission and run your build script
+                sh 'chmod +x Build.sh'
+                sh './Build.sh'
             }
         }
 
         stage('Test') {
             steps {
-                // Runs unit tests
-                sh 'mvn test'
+                // Grant permission and run your test script
+                sh 'chmod +x Test.sh'
+                sh './Test.sh'
             }
         }
 
         stage('Deploy') {
             steps {
-                // Example: Copying the build artifact to a local deployment folder on your Mac
-                sh 'mkdir -p /Users/saumya_shambhavi/Desktop/Jenkins_Deploy'
-                sh 'cp target/*.jar ~/Desktop/Jenkins_Deploy/'
+                // Grant permission and run your deploy script
+                sh 'chmod +x Deploy.sh'
+                sh './Deploy.sh'
             }
         }
     }
