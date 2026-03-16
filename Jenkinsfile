@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                // Grant permission and run your build script
+                // chmod +x gives the script permission to run on Mac
                 sh 'chmod +x Build.sh'
                 sh './Build.sh'
             }
@@ -12,7 +12,6 @@ pipeline {
 
         stage('Test') {
             steps {
-                // Grant permission and run your test script
                 sh 'chmod +x Test.sh'
                 sh './Test.sh'
             }
@@ -20,7 +19,6 @@ pipeline {
 
         stage('Deploy') {
             steps {
-                // Grant permission and run your deploy script
                 sh 'chmod +x Deploy.sh'
                 sh './Deploy.sh'
             }
